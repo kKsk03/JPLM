@@ -1,0 +1,2 @@
+# JapanLincesePlateMaker
+ 原本是来自于nyankobass的一个开发成品

@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Number Plate Maker</title>
+    <meta name="description" content="您可以轻松地为模型汽车/塑料模型的车牌创建打印图片">
+    <meta name="author" content="nyankobass">
+    <meta name="keywords" content="模型车车牌创作并打印">
+    
+    <!-- Google / Search Engine -->
+    <meta itemprop="name" content="Number Plate Maker">
+    <meta itemprop="description" content="您可以轻松地为模型汽车/塑料模型的车牌创建打印图片">
+    <meta itemprop="image" content="http://number-plate.nyankobass.net/img/card.jpg">
+    
+    <!-- other1-->
+    <meta property="og:url" content="http://number-plate.nyankobass.net">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Number Plate Maker">
+    <meta property="og:description" content="您可以轻松地为模型汽车/塑料模型的车牌创建打印图片">
+    <meta property="og:image" content="http://number-plate.nyankobass.net/img/card.jpg">
+    
+    <!-- other2-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Number Plate Maker">
+    <meta name="twitter:description" content="您可以轻松地为模型汽车/塑料模型的车牌创建打印图片">
+    <meta name="twitter:image" content="http://number-plate.nyankobass.net/img/card.jpg">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+    <link href="css/font.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div id="loading" class="fade-box is-show">
+        <div class="message">
+            <div class="loader"></div>
+            <p>加载中......</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <div class="mb-2">
+                <i class="fa fa-car fa-4x icon"></i>
+            </div>
+            <h2>日本车牌图片制作器</h2>
+            <p class="lead">您可以轻松地为模型汽车/塑料模型的车牌创建打印图片</p>
+        </div>
+
+        <div class="row">
+            <div id="preview" class="col-md-6 order-md-2 mb-4">
+                <h4 class="mb-3"> Preview </h4>
+
+                <div class="text-center">
+                    <canvas id="plate-view" class="main-canvas"></canvas>
+                </div>
+
+                <form>
+                    <div class="mt-3">
+                        <label for="firstName">大小</label>
+                        <select class="form-control" id="scale" name="scale"></select>
+                    </div>
+                </form>
+                <div class="text-center">
+
+                    <div class="mt-3">
+                        <button id="download-button" class="btn page-link text-dark d-inline-block">生成！</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 114514-->
+            <div class="col-md-6 order-md-1">
+
+                <h4 class="mb-3">Type</h4>
+                <form id="type-form">
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="normal-car" name="carType" type="radio" class="custom-control-input" checked
+                                required>
+                            <label class="custom-control-label" for="normal-car">普通车辆样式</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="kei-car" name="carType" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="kei-car">小型车辆样式</label>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="home-use" name="payment" type="radio" class="custom-control-input" checked
+                                required>
+                            <label class="custom-control-label" for="home-use">自家用车</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="company-use" name="payment" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="company-use">商用车</label>
+                        </div>
+                    </div>
+                </form>
+
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Input</h4>
+                <form id="form" novalidate>
+                    <div class="mb-3">
+                        <label for="firstName">运输部门</label>
+                        <input type="text" class="form-control" id="kanji" name="kanji" onInput="change_kanji(this)"
+                            value="横浜" placeholder="例）横浜" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username">分类</label>
+                        <div style="display: flex; justify-content: flex-start;">
+                            <select id="small_number1" class="form-control">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value=" "> </option>
+                            </select>
+                            <select id="small_number2" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                            <select id="small_number3" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="lastName">平假名</label>
+                        <input type="text" class="form-control" id="hiragana" name="hiragana" value="さ" placeholder="例：さ"
+                            required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="username">号码</label>
+                        <div style="display: flex; justify-content: flex-start;">
+                            <select id="large_number1" class="form-control">
+                                <option value="0">0</option>
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="・">・</option>
+                            </select>
+                            <select id="large_number2" class="form-control">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="・">・</option>
+                            </select>
+                            <select id="large_number3" class="form-control">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="・">・</option>
+                            </select>
+                            <select id="large_number4" class="form-control">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <a onclick="scrollup(); return false;" href="#"><div id="add_button" class="d-block d-md-none"><i class="fa fa-angle-up"></i></div></a>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">   </p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/number_plate.js"></script>
+</body>
+
+<script>
+var up_timer;
+ 
+ function getPosition(){
+     horizontal = document.body.scrollLeft || document.documentElement.scrollLeft;
+     vertical = document.body.scrollTop  || document.documentElement.scrollTop;
+ }
+  
+ function pageup(x,y){
+     if (up_timer) {
+         clearTimeout(up_timer);
+     }
+     if (y >= 1) {
+         getPosition();
+         var divisionY = (vertical-(vertical/7));
+         var Y = Math.floor(divisionY);
+         window.scrollTo(horizontal,Y);
+         up_timer = setTimeout("pageup("+horizontal+","+Y+")",10);
+     } else {
+         window.scrollTo(horizontal,0);
+         clearTimeout(up_timer);
+     }
+ }
+  
+ function scrollup(){
+     getPosition();
+     pageup(horizontal,vertical);
+ }
+</script>
+
+</html>

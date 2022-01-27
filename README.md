@@ -1,7 +1,7 @@
 # Japan Lincese Plate Maker
- 原本是来自于nyankobass的一个开发成品
- 源链接：https://github.com/nyankobass/NumberPlateMaker（作者已经删除了）
- 备注：由于我是给自己使用的，所以我将原本的日文给汉化了一遍
+- 原本是来自于nyankobass的一个开发成品
+- 源链接：https://github.com/nyankobass/NumberPlateMaker（作者已经删除了）
+- 备注：由于我是给自己使用的，所以我将原本的日文给汉化了一遍
 
 # 使用方法（本地使用）
 - 安装Node.js,链接:https://nodejs.org/en/
